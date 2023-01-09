@@ -77,14 +77,15 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     (785, uint256S("0x000005d11ad99c786cd23c739b219e7fbac3de3a2204bd7e83a84fa8daad3e30"))
     (1000, uint256S("0x0000048450d57a0cbd40edf3b679709da7d2b206412dede89a34076657886a10"))
     (1001, uint256S("0x56e415b8db17f8e46a4da1e37646837ee7ba0259e7cd30b1de044977da332193"))
-    (1197, uint256S("0x7aa7f865a92755b945346281d9fffec0999d92f03b60ffd9a4fa9e1966023619"));
+    (1197, uint256S("0x7aa7f865a92755b945346281d9fffec0999d92f03b60ffd9a4fa9e1966023619"))
+    (2371, uint256S("0x6f36f3ebe0701282e4b548adedc7ff356a7a3b190df1f90fc54f458396543809"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1673227610, // * UNIX timestamp of last checkpoint block
-    1397,          // * total number of transactions between genesis and last checkpoint
+    1673291985, // * UNIX timestamp of last checkpoint block
+    3764,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the UpdateTip debug.log lines)
-    1.000000        // * estimated number of transactions per day after checkpoint
+    0.999970// * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -192,11 +193,11 @@ public:
         consensus.vUpgrades[Consensus::UPGRADE_MASTERNODE_RANK_V2].nActivationHeight     = 116000;
 
         consensus.vUpgrades[Consensus::UPGRADE_POS].hashActivationBlock                    = uint256S("0x56e415b8db17f8e46a4da1e37646837ee7ba0259e7cd30b1de044977da332193");
-        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].hashActivationBlock                 = uint256S("0x0");
-        consensus.vUpgrades[Consensus::UPGRADE_BIP65].hashActivationBlock                  = uint256S("0x0");
-        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].hashActivationBlock      = uint256S("0x0");
-        consensus.vUpgrades[Consensus::UPGRADE_TIME_PROTOCOL_V2].hashActivationBlock       = uint256S("0x0");
-        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].hashActivationBlock = uint256S("0x0");
+        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].hashActivationBlock                 = uint256S("0xc8ab1646f2579e5fa65792194d30239521cbeb0c49540958f930a11422186271");
+        consensus.vUpgrades[Consensus::UPGRADE_BIP65].hashActivationBlock                  = uint256S("0xc8ab1646f2579e5fa65792194d30239521cbeb0c49540958f930a11422186271");
+        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].hashActivationBlock      = uint256S("0x61fc68f374019d29d5d5511398f1a65b48a5b0a56e8a07f977226f750a7f58f3");
+        consensus.vUpgrades[Consensus::UPGRADE_TIME_PROTOCOL_V2].hashActivationBlock       = uint256S("0x954b5a1ea09e08037bafc451f8d02a9926b335a99eb095b42c5508723de90484");
+        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].hashActivationBlock = uint256S("0xf8bc9bdf3f4a9bb4a11fbcb45fc7f7402db114de6df75376ea6dc7c7b8690b1c");
         consensus.vUpgrades[Consensus::UPGRADE_STAKE_MIN_DEPTH_V2].hashActivationBlock     = uint256S("0x0");
         consensus.vUpgrades[Consensus::UPGRADE_MASTERNODE_RANK_V2].hashActivationBlock     = uint256S("0x0");
 
