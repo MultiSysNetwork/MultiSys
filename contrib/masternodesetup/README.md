@@ -1,4 +1,4 @@
-﻿# MultiSys Masternode Setup Guide
+# MultiSys Masternode Setup Guide
 ***
 ## Required
 1) **MYUS collateral value at current block** ([consult the collateral table](reward_structure.png))
