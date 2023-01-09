@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=MultiSys
+Comment= MYUS P2P Cryptocurrency
+Comment[fr]= MYUS, monnaie virtuelle cryptographique pair à pair
+Comment[tr]= MYUS, eşten eşe kriptografik sanal para birimi
+Exec=multisys-qt %u
+Terminal=false
+Type=Application
+Icon=multisys128
+MimeType=x-scheme-handler/multisys;
+Categories=Office;Finance;
+StartupWMClass=MultiSys-qt

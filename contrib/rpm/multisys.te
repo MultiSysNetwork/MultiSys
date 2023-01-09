@@ -1,0 +1,81 @@
+policy_module(multisys, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type multisys_t;
+type multisys_exec_t;
+init_daemon_domain(multisys_t, multisys_exec_t)
+
+permissive multisys_t;
+
+type multisys_initrc_exec_t;
+init_script_file(multisys_initrc_exec_t)
+
+type multisys_conf_t;
+files_type(multisys_conf_t)
+
+type multisys_var_lib_t;
+files_type(multisys_var_lib_t)
+
+type multisys_var_run_t;
+files_type(multisys_var_run_t)
+
+type multisys_port_t;
+corenet_port(multisys_port_t)
+
+########################################
+#
+# multisys local policy
+#
+allow multisys_t self:process { fork };
+
+allow multisys_t self:fifo_file rw_fifo_file_perms;
+allow multisys_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(multisys_t, multisys_conf_t, multisys_conf_t)
+manage_files_pattern(multisys_t, multisys_conf_t, multisys_conf_t)
+
+manage_dirs_pattern(multisys_t, multisys_var_lib_t, multisys_var_lib_t)
+manage_files_pattern(multisys_t, multisys_var_lib_t, multisys_var_lib_t)
+files_var_lib_filetrans(multisys_t, multisys_var_lib_t, { dir file })
+
+manage_dirs_pattern(multisys_t, multisys_var_run_t, multisys_var_run_t)
+manage_files_pattern(multisys_t, multisys_var_run_t, multisys_var_run_t)
+
+sysnet_dns_name_resolve(multisys_t)
+corenet_all_recvfrom_unlabeled(multisys_t)
+
+allow multisys_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(multisys_t)
+corenet_tcp_sendrecv_generic_node(multisys_t)
+corenet_tcp_sendrecv_all_ports(multisys_t)
+corenet_tcp_bind_generic_node(multisys_t)
+
+gen_require(`
+    type multisys_port_t;
+')
+allow multisys_t multisys_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type multisys_port_t;
+')
+allow multisys_t multisys_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(multisys_t)
+
+files_read_etc_files(multisys_t)
+
+miscfiles_read_localization(multisys_t)
+
+sysnet_dns_name_resolve(multisys_t)
+
+allow multisys_t multisys_exec_t:file execute_no_trans;
+allow multisys_t self:process setsched;
+corecmd_exec_ls(multisys_t)
+corenet_tcp_connect_http_port(multisys_t)
+dev_read_urand(multisys_t)
+fs_getattr_xattr_fs(multisys_t)
+kernel_read_system_state(multisys_t)
