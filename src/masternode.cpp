@@ -409,13 +409,10 @@ CAmount CMasternode::GetBlockValue(int nHeight)
     CAmount nSubsidy;
 
     if (nHeight == 1) {
-        nSubsidy = 400200 * COIN; 
+        nSubsidy = 700000 * COIN; 
     }
     else if (nHeight <= 1000) {
-        nSubsidy = 100 * COIN;
-    }
-    else if (nHeight <= 2700) {
-        nSubsidy = 110 * COIN;
+        nSubsidy = 10 * COIN;
     }
     else if (nHeight <= 999999) { 
         nSubsidy = 100 * COIN;

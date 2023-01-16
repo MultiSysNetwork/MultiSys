@@ -69,23 +69,15 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
  */
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256S("0x0000098e67073edaa2969838ab1e562b36313fd9d4a1af74601039e884b1eb36"))
-    (1, uint256S("0x000001a465ba4842077333b089833d8d71442411dff06116e0a136b064feda64"))
-    (16, uint256S("0x000004003a72fc1612a25bba4a938782fb627f895a540be77a6ae4359bd68380"))
-    (100, uint256S("0x000002074097811f309520df233964775e137e2c658a4fcb09c0993d4955e9b2"))
-    (101, uint256S("0x0000021dbc5e100bfb324d32e67f455c1e7578120ec08735b7237debe067afaf"))
-    (785, uint256S("0x000005d11ad99c786cd23c739b219e7fbac3de3a2204bd7e83a84fa8daad3e30"))
-    (1000, uint256S("0x0000048450d57a0cbd40edf3b679709da7d2b206412dede89a34076657886a10"))
-    (1001, uint256S("0x56e415b8db17f8e46a4da1e37646837ee7ba0259e7cd30b1de044977da332193"))
-    (1197, uint256S("0x7aa7f865a92755b945346281d9fffec0999d92f03b60ffd9a4fa9e1966023619"))
-    (2371, uint256S("0x6f36f3ebe0701282e4b548adedc7ff356a7a3b190df1f90fc54f458396543809"));
+    (0, uint256S("0x0000043e0bb00f102629b65f05b37a8836f17e138475224ed65d11d993e72bbd"));
+
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1673291985, // * UNIX timestamp of last checkpoint block
-    3764,          // * total number of transactions between genesis and last checkpoint
+    1673283753, // * UNIX timestamp of last checkpoint block
+    0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the UpdateTip debug.log lines)
-    0.999970// * estimated number of transactions per day after checkpoint
+    0.000000 // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -116,10 +108,10 @@ public:
     {
         networkID = CBaseChainParams::MAIN;
         strNetworkID = "main";
-        genesis = CreateGenesisBlock(1673133333, 471490, 0x1e0ffff0, 1, 0 * COIN);
+        genesis = CreateGenesisBlock(1673283753, 462097, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0000098e67073edaa2969838ab1e562b36313fd9d4a1af74601039e884b1eb36"));
-        assert(genesis.hashMerkleRoot == uint256S("0x9b005deaa34a35a6e920ad6bdd761a91f2d7361e414c77c874592a9637651dbd"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000043e0bb00f102629b65f05b37a8836f17e138475224ed65d11d993e72bbd"));
+        assert(genesis.hashMerkleRoot == uint256S("0xb3123c23ce69ef99ad63829c3c6e352801d56021c61d445bc3f023174b65d699"));
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.powLimit   = ~UINT256_ZERO >> 20;   
@@ -143,7 +135,7 @@ public:
         consensus.nTimeSlotLength = 15;
 
         // spork keys
-        consensus.strSporkPubKey = "03a34515e2763c4e271d4ae2fbc11265b21056508b6ca1bda67de305b5fa098ada";
+        consensus.strSporkPubKey = "03d8a59db289aad53b9d5ddd1a0fd9f30fa6af43f845a6ac50b07850a0978ac433";
         consensus.strSporkPubKeyOld = "";
         consensus.nTime_EnforceNewSporkKey = 0;
         consensus.nTime_RejectOldSporkKey = 0;
@@ -192,12 +184,12 @@ public:
         consensus.vUpgrades[Consensus::UPGRADE_STAKE_MIN_DEPTH_V2].nActivationHeight     = 5001;
         consensus.vUpgrades[Consensus::UPGRADE_MASTERNODE_RANK_V2].nActivationHeight     = 116000;
 
-        consensus.vUpgrades[Consensus::UPGRADE_POS].hashActivationBlock                    = uint256S("0x56e415b8db17f8e46a4da1e37646837ee7ba0259e7cd30b1de044977da332193");
-        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].hashActivationBlock                 = uint256S("0xc8ab1646f2579e5fa65792194d30239521cbeb0c49540958f930a11422186271");
-        consensus.vUpgrades[Consensus::UPGRADE_BIP65].hashActivationBlock                  = uint256S("0xc8ab1646f2579e5fa65792194d30239521cbeb0c49540958f930a11422186271");
-        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].hashActivationBlock      = uint256S("0x61fc68f374019d29d5d5511398f1a65b48a5b0a56e8a07f977226f750a7f58f3");
-        consensus.vUpgrades[Consensus::UPGRADE_TIME_PROTOCOL_V2].hashActivationBlock       = uint256S("0x954b5a1ea09e08037bafc451f8d02a9926b335a99eb095b42c5508723de90484");
-        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].hashActivationBlock = uint256S("0xf8bc9bdf3f4a9bb4a11fbcb45fc7f7402db114de6df75376ea6dc7c7b8690b1c");
+        consensus.vUpgrades[Consensus::UPGRADE_POS].hashActivationBlock                    = uint256S("0x0");
+        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].hashActivationBlock                 = uint256S("0x0");
+        consensus.vUpgrades[Consensus::UPGRADE_BIP65].hashActivationBlock                  = uint256S("0x0");
+        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].hashActivationBlock      = uint256S("0x0");
+        consensus.vUpgrades[Consensus::UPGRADE_TIME_PROTOCOL_V2].hashActivationBlock       = uint256S("0x0");
+        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].hashActivationBlock = uint256S("0x0");
         consensus.vUpgrades[Consensus::UPGRADE_STAKE_MIN_DEPTH_V2].hashActivationBlock     = uint256S("0x0");
         consensus.vUpgrades[Consensus::UPGRADE_MASTERNODE_RANK_V2].hashActivationBlock     = uint256S("0x0");
 
@@ -206,25 +198,14 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0xb8;
-        pchMessageStart[1] = 0xb8;
-        pchMessageStart[2] = 0xb8;
-        pchMessageStart[3] = 0xb8;
+        pchMessageStart[0] = 0xb4;
+        pchMessageStart[1] = 0xf0;
+        pchMessageStart[2] = 0xd8;
+        pchMessageStart[3] = 0xe3;
         nDefaultPort = 10100;
 
-        vSeeds.push_back(CDNSSeedData("seed01", "67.205.149.29"));
-        vSeeds.push_back(CDNSSeedData("seed02", "67.205.148.84"));
+  //      vSeeds.push_back(CDNSSeedData("seed01", "xxxxx"));
 
-        vSeeds.push_back(CDNSSeedData("seed01", "seed01.myus-coin.com"));
-        vSeeds.push_back(CDNSSeedData("seed02", "seed02.myus-coin.com"));
-        vSeeds.push_back(CDNSSeedData("seed03", "seed03.myus-coin.com"));
-        vSeeds.push_back(CDNSSeedData("seed04", "seed04.myus-coin.com"));
-        vSeeds.push_back(CDNSSeedData("seed05", "seed05.myus-coin.com"));
-        vSeeds.push_back(CDNSSeedData("seed06", "seed06.myus-coin.com"));
-        vSeeds.push_back(CDNSSeedData("seed07", "seed07.myus-coin.com"));
-        vSeeds.push_back(CDNSSeedData("seed08", "seed08.myus-coin.com"));
-        vSeeds.push_back(CDNSSeedData("seed09", "seed09.myus-coin.com"));
-        vSeeds.push_back(CDNSSeedData("seed10", "seed10.myus-coin.com"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 50);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 110);
@@ -283,7 +264,7 @@ public:
         consensus.nTimeSlotLength = 15;
 
         // spork keys
-        consensus.strSporkPubKey = "03abe20318568c0f480e11208ae12dcbc6fb21557a0d7b09340b825c18c10324a3";
+        consensus.strSporkPubKey = "02be8e10ca2315558f52dbb6f08bc74ebab1c47ab2483ce482d6f859cd1d1969a2";
         consensus.strSporkPubKeyOld = "";
         consensus.nTime_EnforceNewSporkKey = 0;
         consensus.nTime_RejectOldSporkKey = 0;
@@ -411,7 +392,7 @@ public:
         private key hex: cuAkJhkVqmW7TH57Uk8trE7CgwFQcTiKdGmU4e187Trqswhm9Eu1
         Address: TDSTf9zrAbM6eN5QppEugdy5tC4mNGtsfM
         */
-        consensus.strSporkPubKey = "03a663474e83bcd2152218a0c5f65acbfbae9e93587deee3a19aad10a1f7b0d543";
+        consensus.strSporkPubKey = "03a4f37eb9a4a9bc1237754de74497d8be1486711b54dd6fab14ac9cf2e48f4f19";
         consensus.strSporkPubKeyOld = "";
         consensus.nTime_EnforceNewSporkKey = 0;
         consensus.nTime_RejectOldSporkKey = 0;
