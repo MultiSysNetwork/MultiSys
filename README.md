@@ -26,7 +26,7 @@ Specifications:
 
 • PoS Blocks:       Starting from 1001  
 
-• Premine:          500,000 MYUS
+• Premine:          700,000 MYUS
 
 • Maturity:         100 Confirmations  
 
