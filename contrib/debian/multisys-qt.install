@@ -1,0 +1,6 @@
+usr/local/bin/multisys-qt usr/bin
+share/pixmaps/multisys32.xpm usr/share/pixmaps
+share/pixmaps/multisys16.xpm usr/share/pixmaps
+share/pixmaps/multisys128.png usr/share/pixmaps
+debian/multisys-qt.desktop usr/share/applications
+debian/multisys-qt.protocol usr/share/kde4/services/
