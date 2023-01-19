@@ -69,12 +69,25 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
  */
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256S("0x0000043e0bb00f102629b65f05b37a8836f17e138475224ed65d11d993e72bbd"));
-
+    (0, uint256S("0x0000098e67073edaa2969838ab1e562b36313fd9d4a1af74601039e884b1eb36"));
+    (1, uint256S("0x00000435d741874e2eb40587c8a940001d4c4e415fe86a3363a8891021700ddd"))
+    (16, uint256S("0x000003cf9bbada69f348a7965ba4f1f5c1ec2463cf6bfaa394ca3f554adb8d42"))
+    (100, uint256S("0x0000049686dad82a408b0a8d41ab3cc0bb70d45e3972579b2caff4cf9028f7dd"))
+    (101, uint256S("0x000003afebf1411aa97bd8c56b3e0a4abaf48a461b24975a77907d2a9a751f7a"))
+    (785, uint256S("0x0000036991ada41d3b48a12a6f0aa2f9eda7d603704381870c75e6529cf6747a"))
+    (1000, uint256S("0x0000046bd60691e5dcbae30e296b0a8b9c214b2e59c772013297e31ef6029f56"))
+    (1001, uint256S("0xcdc3e4f1a0728bf84559e130279ef6cc82e6bf258e9af3a1223c787cdeca4e5b"))
+    (1197, uint256S("0x4165def4c92530b50f15bbc40853d277048afa4b3f5cf8b8060c1b283e029ff8"))
+    (1441, uint256S("0x4d422854a504e10da354835ca236c8d6c578832e200afc974be92011a12ee666"))
+    (1541, uint256S("0x74c291306dd9740fb6fe098a9594ae14eff245c7b93f5b49b09616a77bcc1fef"))
+    (1641, uint256S("0xeb346bb6523de201fd3a827a7d50573c5758eb258880a470e77ef972988d1d30"))
+    (1741, uint256S("0xfd5ef75891e57eb26e5d65c3ce01d78a77357ba3bb6d10b5e091595a8ace03d0"))
+    (2371, uint256S("0xb6fca1560da7f7958bc5a7508858360318f59d08e0779479440bbea9bd10bd2b"))
+    (2800, uint256S("0x2882ff7416ef8f7ecfa7e6a2e3de184d50387a898dd93ff464dc730fd8863952"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1673283753, // * UNIX timestamp of last checkpoint block
+    1673133333, // * UNIX timestamp of last checkpoint block
     0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the UpdateTip debug.log lines)
     0.000000 // * estimated number of transactions per day after checkpoint
@@ -108,10 +121,10 @@ public:
     {
         networkID = CBaseChainParams::MAIN;
         strNetworkID = "main";
-        genesis = CreateGenesisBlock(1673283753, 462097, 0x1e0ffff0, 1, 0 * COIN);
+        genesis = CreateGenesisBlock(1673133333, 471490, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0000043e0bb00f102629b65f05b37a8836f17e138475224ed65d11d993e72bbd"));
-        assert(genesis.hashMerkleRoot == uint256S("0xb3123c23ce69ef99ad63829c3c6e352801d56021c61d445bc3f023174b65d699"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000098e67073edaa2969838ab1e562b36313fd9d4a1af74601039e884b1eb36"));
+        assert(genesis.hashMerkleRoot == uint256S("0x9b005deaa34a35a6e920ad6bdd761a91f2d7361e414c77c874592a9637651dbd"));
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.powLimit   = ~UINT256_ZERO >> 20;   
@@ -184,12 +197,12 @@ public:
         consensus.vUpgrades[Consensus::UPGRADE_STAKE_MIN_DEPTH_V2].nActivationHeight     = 5001;
         consensus.vUpgrades[Consensus::UPGRADE_MASTERNODE_RANK_V2].nActivationHeight     = 116000;
 
-        consensus.vUpgrades[Consensus::UPGRADE_POS].hashActivationBlock                    = uint256S("0x0");
-        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].hashActivationBlock                 = uint256S("0x0");
-        consensus.vUpgrades[Consensus::UPGRADE_BIP65].hashActivationBlock                  = uint256S("0x0");
-        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].hashActivationBlock      = uint256S("0x0");
-        consensus.vUpgrades[Consensus::UPGRADE_TIME_PROTOCOL_V2].hashActivationBlock       = uint256S("0x0");
-        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].hashActivationBlock = uint256S("0x0");
+        consensus.vUpgrades[Consensus::UPGRADE_POS].hashActivationBlock                    = uint256S("0xcdc3e4f1a0728bf84559e130279ef6cc82e6bf258e9af3a1223c787cdeca4e5b");
+        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].hashActivationBlock                 = uint256S("0x4d422854a504e10da354835ca236c8d6c578832e200afc974be92011a12ee666");
+        consensus.vUpgrades[Consensus::UPGRADE_BIP65].hashActivationBlock                  = uint256S("0x4d422854a504e10da354835ca236c8d6c578832e200afc974be92011a12ee666");
+        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].hashActivationBlock      = uint256S("0x74c291306dd9740fb6fe098a9594ae14eff245c7b93f5b49b09616a77bcc1fef");
+        consensus.vUpgrades[Consensus::UPGRADE_TIME_PROTOCOL_V2].hashActivationBlock       = uint256S("0xeb346bb6523de201fd3a827a7d50573c5758eb258880a470e77ef972988d1d30");
+        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].hashActivationBlock = uint256S("0xfd5ef75891e57eb26e5d65c3ce01d78a77357ba3bb6d10b5e091595a8ace03d0");
         consensus.vUpgrades[Consensus::UPGRADE_STAKE_MIN_DEPTH_V2].hashActivationBlock     = uint256S("0x0");
         consensus.vUpgrades[Consensus::UPGRADE_MASTERNODE_RANK_V2].hashActivationBlock     = uint256S("0x0");
 
@@ -198,14 +211,18 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0xb4;
-        pchMessageStart[1] = 0xf0;
-        pchMessageStart[2] = 0xd8;
-        pchMessageStart[3] = 0xe3;
+        pchMessageStart[0] = 0xc7;
+        pchMessageStart[1] = 0xc7;
+        pchMessageStart[2] = 0xc7;
+        pchMessageStart[3] = 0xc7;
         nDefaultPort = 10100;
 
-  //      vSeeds.push_back(CDNSSeedData("seed01", "xxxxx"));
-
+        vSeeds.push_back(CDNSSeedData("seed01", "142.93.13.193"));
+        vSeeds.push_back(CDNSSeedData("seed02", "167.99.157.198"));
+        vSeeds.push_back(CDNSSeedData("seed03", "142.93.3.21"));
+        vSeeds.push_back(CDNSSeedData("seed04", "204.48.29.246"));
+        vSeeds.push_back(CDNSSeedData("seed05", "204.48.17.7"));
+        vSeeds.push_back(CDNSSeedData("seed06", "192.81.209.177"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 50);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 110);
