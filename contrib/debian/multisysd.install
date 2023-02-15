@@ -1,3 +1,0 @@
-usr/local/bin/multisysd usr/bin
-usr/local/bin/multisys-cli usr/bin
-debian/examples/multisys.conf etc/multisys

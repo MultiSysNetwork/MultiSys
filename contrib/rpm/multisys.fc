@@ -1,8 +1,0 @@
-/usr/bin/multisys-cli		--	gen_context(system_u:object_r:multisys_exec_t,s0)
-/usr/sbin/multisysd		--	gen_context(system_u:object_r:multisys_exec_t,s0)
-/usr/lib(64)?/multisys/multisysd		--	gen_context(system_u:object_r:multisys_exec_t,s0)
-
-/etc/multisys(/.*)?		gen_context(system_u:object_r:multisys_conf_t,s0)
-/var/lib/multisys(/.*)?		gen_context(system_u:object_r:multisys_var_lib_t,s0)
-
-(/var)?/run/multisysd(/.*)?   gen_context(system_u:object_r:multisys_var_run_t,s0)
